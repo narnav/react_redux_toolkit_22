@@ -1,22 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import DisplayUpd from "./DisplayUpd";
+import { useSelector, useDispatch } from "react-redux";
 
+import {
+  decrement,
+  increment,
+  selectCount,
+} from "./counterSlice";
 function App() {
+  const count = useSelector(selectCount);
+  const dispatch = useDispatch();
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={() => dispatch(increment())}>+</button>
+        <button onClick={() => dispatch(decrement())}>-</button>
+        {count}
+        <DisplayUpd></DisplayUpd>
       </header>
     </div>
   );
